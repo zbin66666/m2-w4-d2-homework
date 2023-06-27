@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Food Blog</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
+  <style>
+    * {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    /* Rest of the styles... */
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <navbar></navbar>
+    <aside id="leftside"></aside>
+    <aside id="rightside"></aside>
+    <div id="container">
+      <header><span>Food Blog</span></header>
+      <main>
+        <food-blog></food-blog>
+      </main>
+      <footer>
+        &copy; Copyright FOOD BLOG
+      </footer>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+
+  <script src="Navbar.vue" type="module"></script>
+  <script src="FoodBlog.vue" type="module"></script>
+
+  <script>
+    new Vue({
+      el: '#app',
+    });
+  </script>
+</body>
+
+</html>
