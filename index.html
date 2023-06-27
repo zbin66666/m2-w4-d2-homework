@@ -1,48 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-  <title>Food Blog</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
-  <style>
-    * {
-      font-family: Arial, Helvetica, sans-serif;
-    }
-
-    /* Rest of the styles... */
-  </style>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+  <script src="script.js"></script>
 </head>
-
 <body>
   <div id="app">
-    <navbar></navbar>
-    <aside id="leftside"></aside>
-    <aside id="rightside"></aside>
-    <div id="container">
-      <header><span>Food Blog</span></header>
-      <main>
-        <food-blog></food-blog>
-      </main>
-      <footer>
-        &copy; Copyright FOOD BLOG
-      </footer>
+    <div class="profile" v-for="author in authors" :key="author.name">
+      <img :src="'profile.png'" @click="showProfile(author)">
+      <div class="overlay" v-if="author === selectedAuthor">
+        <div class="content">
+          <h2>{{ author.name }}</h2>
+          <p>Foodie Level: {{ author.level }}</p>
+          <p>{{ author.bio }}</p>
+          <button @click="hideProfile">Close</button>
+        </div>
+      </div>
     </div>
   </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
-
-  <script src="Navbar.vue" type="module"></script>
-  <script src="FoodBlog.vue" type="module"></script>
 
   <script>
     new Vue({
       el: '#app',
+      data: {
+        selectedAuthor: null,
+        authors: [
+          {
+            name: 'Brianna',
+            level: 'Novice',
+            bio: 'Food enthusiast. Love to cook and experiment. Into only organic, fat free, sugar free stuffs!',
+            image: 'placeholder.jpg'
+          },
+          {
+            name: 'Linh',
+            level: 'Newcomer',
+            bio: 'Love food! Grew up with meat and potatoes. Recently venture outside my comfort zone. Loving everything I have been eating so far. Thai is my favorite at this time.',
+            image: 'placeholder.jpg'
+          },
+          {
+            name: 'Catherine Leonardo',
+            level: 'Mentor',
+            bio: 'I have to say I never was the adventurous type until 2 years ago. My boyfriend, who is of Japanese background, exposed me to other cultural food and I have never look back since!',
+            image: 'placeholder.jpg'
+          },
+          {
+            name: 'Kali',
+            level: 'Novice',
+            bio: 'Food is my passion. So is cooking. I love to experiment and try new things. I have to admit I\'m a food whore! Invite me over for dinner and I\'ll be there!',
+            image: 'placeholder.jpg'
+          }
+        ]
+      },
+      methods: {
+        showProfile(author) {
+          this.selectedAuthor = author;
+        },
+        hideProfile() {
+          this.selectedAuthor = null;
+        }
+      }
     });
   </script>
 </body>
-
 </html>
